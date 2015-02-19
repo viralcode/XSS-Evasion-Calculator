@@ -1,0 +1,212 @@
+<html>
+<head>
+<title>XSS evasion calculator by Jijojohn @ singlelinelogics.com</title>
+<script src="jquery.js"></script>
+<script src="watermark.js"></script>
+<style>
+body
+{
+	width:400px;
+	height:280px;
+	background-color:#148D0B;
+	background-image:url("bg.png");
+}
+#logo
+{
+	margin-left:80px;
+}
+.button_example{
+border:1px solid #df0909; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px;font-size:12px;font-family:arial, helvetica, sans-serif; padding: 10px 10px 10px 10px; text-decoration:none; display:inline-block;text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; color: #FFFFFF;
+ background-color: #f62b2b; background-image: -webkit-gradient(linear, left top, left bottom, from(#f62b2b), to(#d20202));
+ background-image: -webkit-linear-gradient(top, #f62b2b, #d20202);
+ background-image: -moz-linear-gradient(top, #f62b2b, #d20202);
+ background-image: -ms-linear-gradient(top, #f62b2b, #d20202);
+ background-image: -o-linear-gradient(top, #f62b2b, #d20202);
+ background-image: linear-gradient(to bottom, #f62b2b, #d20202);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#f62b2b, endColorstr=#d20202);
+}
+
+.button_example:hover{
+ border:1px solid #b30808;
+ background-color: #e40a0a; background-image: -webkit-gradient(linear, left top, left bottom, from(#e40a0a), to(#9f0202));
+ background-image: -webkit-linear-gradient(top, #e40a0a, #9f0202);
+ background-image: -moz-linear-gradient(top, #e40a0a, #9f0202);
+ background-image: -ms-linear-gradient(top, #e40a0a, #9f0202);
+ background-image: -o-linear-gradient(top, #e40a0a, #9f0202);
+ background-image: linear-gradient(to bottom, #E40EB9, #FFA3A3);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#E40EB9, endColorstr=##FFA3A3);
+}
+.help{
+
+
+border:1px solid #df0909; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px;font-size:12px;font-family:arial, helvetica, sans-serif; padding: 10px 10px 10px 10px; text-decoration:none; display:inline-block;text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; color: #FFFFFF;
+ background-color: #f62b2b; background-image: -webkit-gradient(linear, left top, left bottom, from(#f62b2b), to(#d20202));
+ background-image: -webkit-linear-gradient(top, #f62b2b, #d20202);
+ background-image: -moz-linear-gradient(top, #f62b2b, #d20202);
+ background-image: -ms-linear-gradient(top, #f62b2b, #d20202);
+ background-image: -o-linear-gradient(top, #f62b2b, #d20202);
+ background-image: linear-gradient(to bottom, #f62b2b, #d20202);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#f62b2b, endColorstr=#d20202);
+}
+
+.help:hover{
+ border:1px solid #b30808;
+ background-color: #e40a0a; background-image: -webkit-gradient(linear, left top, left bottom, from(#e40a0a), to(#9f0202));
+ background-image: -webkit-linear-gradient(top, #e40a0a, #9f0202);
+ background-image: -moz-linear-gradient(top, #e40a0a, #9f0202);
+ background-image: -ms-linear-gradient(top, #e40a0a, #9f0202);
+ background-image: -o-linear-gradient(top, #e40a0a, #9f0202);
+ background-image: linear-gradient(to bottom, #e40a0a, #9f0202);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#e40a0a, endColorstr=#9f0202);
+}
+
+h4
+{
+	margin-top:21px;
+	color:#fff;
+}
+
+#copy table
+{
+  bottom:0px;
+  position:absolute;
+  left:40px;
+ 
+}
+#copy table a
+{
+	color:#fff;
+	font-family:"MS Sans Serif";
+}
+#copy table a:hover
+{
+	text-decoration:none;
+}
+h2
+{
+	font-size:16px;
+	margin-left:38px;
+	color:#fff;
+	display: block;
+	background-color: #f62b2b; background-image: -webkit-gradient(linear, left top, left bottom, from(#f62b2b), to(#d20202));
+    background-image: -webkit-linear-gradient(top, #f62b2b, #d20202);
+    background-image: -moz-linear-gradient(top, #f62b2b, #d20202);
+    background-image: -ms-linear-gradient(top, #f62b2b, #d20202);
+    background-image: -o-linear-gradient(top, #f62b2b, #d20202);
+    background-image: linear-gradient(to bottom, #f62b2b, #d20202);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#f62b2b, endColorstr=#d20202);
+	text-align:center;
+	width:350px;
+	font-family:"MS Sans Serif";
+	
+}
+marquee
+{
+	color:#fff;
+	font-size:x-large;
+	font-family:"MS Sans Serif";
+	margin-top:50px;
+}
+
+#select
+{
+	
+	width:140px;
+	height:30px;
+    color:#fff;
+    border-radius:5px;
+    background-color:#df0909;
+   border:0px;
+    font-weight:bolder;
+    margin-left:115px;
+    margin-top:10px;
+   display:none;
+    
+}
+#rr
+{
+	margin-left:98px;
+	margin-top:20px;
+
+}
+#areas
+{
+	margin-top:14px;
+	margin-left:50px;
+	height:90px;
+	width:300px;
+	display:none;
+	background: white;
+    border: 1px solid #ffa853;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 3px #ffa853;
+    color: #666;
+}
+#inputs
+{
+	height:90px;
+	width:300px;
+	text-align:center;
+	margin-top:-25px;
+	margin-left:50px;
+	background: white;
+    border: 1px solid #ffa853;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 3px #ffa853;
+    color: #666;
+}
+#info
+{
+	width:270px;
+	height:150px;
+	margin-top:-100px;
+	left:68px;
+	background-color:#3B5998;
+	border:2px dashed #ccc;
+	border-radius:9px;
+	position:absolute;
+	
+	
+}
+#info
+{
+	background-image:url(src.images/aboutbg.png);
+	display:none;
+}
+#rar
+{
+	color:#fff;
+	font-family:"MS Sans Serif";
+	margin-left:245px;
+	margin-top:8px;
+	font-size:13px;
+}
+</style>
+</head>
+
+<body>
+<img src="src.images/logo.png" id="logo"/>
+<textarea id="inputs"></textarea>
+<table border="0" id="rr">
+<tr>
+<td><a class="button_example" href="#">Process input </a></td><td><a class="help" href="#" >Need Help?</a></td>
+</tr>
+</table>
+<select id="select"><option>Select encoding</option><option>HEX ~ URL</option><option>HEX ~ HTML</option><option>DECIMAL ~ HTML</option><option>Base 64</option><option>Char Code</option></select>
+
+<textarea id="areas"></textarea>
+
+<div id="copy">
+<table border="0">
+<tr><td><h4>Developed by</h4></td><td><a href="https://www.facebook.com/cubiccoder" target="_blank">Jijojohn</a></td><td><h4>@</h4></td><td><a href="http://www.singlelinelogics.com" target="_blank">Singlelinelogics Security</a></td></table>
+</div>
+
+<div id = "info">
+	<h3 id="rar">X</h3>
+</div>
+
+
+
+
+
+
+
+
+<script src="external.js" type="text/javascript"></script>
+</body>
+</html>
